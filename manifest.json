@@ -1,0 +1,32 @@
+{
+    "name": "Timer Extensions",
+    "version": "1.0",
+    "manifest_version": 2,
+    "description": "How much time you spend on facebook, instagram!",
+
+    "browser_action": {
+        "default_popup": "popup.html",
+        "default_icon": "icon.png"
+    },
+    "background": {
+        "scripts": [
+            "js/jquery/jquery.min.js",
+            "js/background.js"
+        ],
+        "persistent": true
+    },
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+
+    "content_scripts": [
+        {
+            "js": ["js/jquery/jquery.min.js", "js/contentscript.js"],
+            "matches": ["*://*.facebook.com/*", "*://*.instagram.com/*"]
+        }
+    ],
+    "permissions": [
+        "history",
+        "tabs",
+        "storage",
+        "unlimitedStorage"
+    ]
+}
